@@ -4,16 +4,20 @@ fetch("https://handlers.education.launchcode.org/static/planets.json").then(func
    response.json().then(function(json) {
 
       let destChoice = document.getElementById("missionTarget")
+      let index = Math.floor(Math.random() *10);
+      while (index > json.length){
+         index =  Math.floor(Math.random() *10);
+      }
 
       if (destChoice) {
 
          let choice =  `<h2>Mission Destination</h2>
                         <ol>
-                            <li>Name: ${json[0].name}</li>
-                            <li>Diameter: ${json[0].diameter}</li>
-                            <li>Star: ${json[0].star}</li>
-                            <li>Distance from Earth: ${json[0].distance}</li>
-                            <li>Number of Moons: ${json[0].moons}</li>
+                            <li>Name: ${json[index].name}</li>
+                            <li>Diameter: ${json[index].diameter}</li>
+                            <li>Star: ${json[index].star}</li>
+                            <li>Distance from Earth: ${json[index].distance}</li>
+                            <li>Number of Moons: ${json[index].moons}</li>
                         </ol>
                         <img src="${json[0].image}">`
               destChoice.innerHTML = choice;
