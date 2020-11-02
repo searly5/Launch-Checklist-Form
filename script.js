@@ -77,11 +77,14 @@ fetch("https://handlers.education.launchcode.org/static/planets.json").then(func
          h2LaunchStatus.style.color = "green";
          console.log(h2LaunchStatus);
       }
-      else if (fuelLevelInput < 10000) {
+      if (fuelLevelInput < 10000) {
          display.style.visibility = "visible";
          h2LaunchStatus.innerHTML = "Shuttle not ready for launch!";
          h2LaunchStatus.style.color = "red";
          liFuelStatus.innerHTML= "Fuel level is too low to launch!";
+      }
+      else{
+         liFuelStatus.innerHTML = "Fuel level high enough for launch"
       }
        if(cargoMassInput > 10000) {
          display.style.visibility = "visible";
@@ -89,7 +92,9 @@ fetch("https://handlers.education.launchcode.org/static/planets.json").then(func
          h2LaunchStatus.style.color = "red";
          liCargo.innerHTML = "Cargo too heavy for launch!";
       }
-   
+      else {
+         liCargo.innerHTML = "Cargo mass low enough for launch";
+      }
 
      
    });
